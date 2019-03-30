@@ -16,10 +16,10 @@ import org.springframework.web.client.RestTemplate;
 @EnableEurekaClient
 @EnableOAuth2Client
 @SpringBootApplication
-public class AccountApplication {
+public class AccountsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AccountApplication.class, args);
+        SpringApplication.run(AccountsApplication.class, args);
     }
 
     @Bean

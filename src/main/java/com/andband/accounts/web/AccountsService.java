@@ -6,12 +6,12 @@ import com.andband.accounts.persistence.AccountRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AccountService {
+public class AccountsService {
 
     private AccountRepository accountRepository;
     private AccountMapper accountMapper;
 
-    AccountService(AccountRepository accountRepository, AccountMapper accountMapper) {
+    AccountsService(AccountRepository accountRepository, AccountMapper accountMapper) {
         this.accountRepository = accountRepository;
         this.accountMapper = accountMapper;
     }
@@ -24,7 +24,6 @@ public class AccountService {
                 throw new ApplicationException("an account exists with email: " + accountDTO.getEmail());
             }
             account = accountMapper.dtoToEntity(accountDTO);
-            account.setEnabled(true);
             accountRepository.save(account);
         }
 
