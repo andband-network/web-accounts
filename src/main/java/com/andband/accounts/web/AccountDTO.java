@@ -4,6 +4,8 @@ public class AccountDTO {
 
     private String id;
 
+    private String name;
+
     private String email;
 
     public String getId() {
@@ -14,6 +16,14 @@ public class AccountDTO {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -21,5 +31,4 @@ public class AccountDTO {
     public void setEmail(String email) {
         this.email = email;
     }
-
 }
