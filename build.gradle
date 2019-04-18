@@ -32,8 +32,6 @@ dependencies {
     runtime 'org.glassfish.jaxb:jaxb-runtime:2.3.1'
 
     annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
-
-    dev 'org.springframework.boot:spring-boot-devtools'
 }
 
 dependencyManagement {
