@@ -18,10 +18,6 @@ ext {
     mapstructVersion = '1.3.0.Final'
 }
 
-configurations {
-    dev
-}
-
 dependencies {
     implementation 'mysql:mysql-connector-java:6.0.6'
     implementation 'org.hibernate:hibernate-entitymanager:5.3.6.Final'
@@ -47,6 +43,5 @@ dependencyManagement {
 }
 
 bootRun {
-    systemProperties = (Map) System.properties
-    classpath = sourceSets.main.runtimeClasspath + configurations.dev
+    systemProperties = System.properties
 }
