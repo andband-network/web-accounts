@@ -5,6 +5,8 @@ import com.andband.accounts.persistence.Account;
 import com.andband.accounts.persistence.AccountRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AccountsService {
 
@@ -14,6 +16,14 @@ public class AccountsService {
     AccountsService(AccountRepository accountRepository, AccountMapper accountMapper) {
         this.accountRepository = accountRepository;
         this.accountMapper = accountMapper;
+    }
+
+    AccountDTO getAccount(String accountId) {
+        Optional<Account> account = accountRepository.findById(accountId);
+        if (!account.isPresent()) {
+            throw new ApplicationException("could not find account with id " + accountId);
+        }
+        return accountMapper.entityToDTO(account.get());
     }
 
     AccountDTO createAccount(AccountDTO accountDTO) {

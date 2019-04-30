@@ -13,6 +13,12 @@ public class AccountsController {
         this.accountsService = accountsService;
     }
 
+    @GetMapping("/{accountId}")
+    @ResponseStatus(HttpStatus.OK)
+    public AccountDTO getAccount(@PathVariable("accountId") String accountId) {
+        return accountsService.getAccount(accountId);
+    }
+
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public AccountDTO createAccount(@RequestBody AccountDTO account) {
