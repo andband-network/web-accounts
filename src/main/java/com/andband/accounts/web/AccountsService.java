@@ -40,6 +40,10 @@ public class AccountsService {
         return accountMapper.entityToDTO(account);
     }
 
+    void deleteAccount(String accountId) {
+        accountRepository.deleteAccountById(accountId);
+    }
+
     private boolean accountExists(String email) {
         Account account = accountRepository.findByEmail(email);
         return account != null;

@@ -25,4 +25,10 @@ public class AccountsController {
         return accountsService.createAccount(account);
     }
 
+    @DeleteMapping("/{accountId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteAccount(@PathVariable("accountId") String accountId) {
+        accountsService.deleteAccount(accountId);
+    }
+
 }
