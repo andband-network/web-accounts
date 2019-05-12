@@ -8,6 +8,7 @@ import com.andband.accounts.persistence.account.AccountRepository;
 import com.andband.accounts.persistence.token.PasswordResetToken;
 import com.andband.accounts.service.TokenService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -55,6 +56,20 @@ public class AccountsService {
         accountRepository.deleteAccountById(accountId);
     }
 
+    @Transactional
+    public void updateName(String name, String accountId) {
+        accountRepository.updateNameWhereAccountId(name, accountId);
+    }
+
+    @Transactional
+    public void updateEmail(String email, String accountId) {
+        accountRepository.updateEmailWhereAccountId(email, accountId);
+    }
+
+    void updatePassword(String password, String accountId) {
+        authService.updatedPassword(password, accountId);
+    }
+
     void initiatePasswordReset(String email) {
         Account account = accountRepository.findByEmail(email);
         if (account == null) {
@@ -73,7 +88,7 @@ public class AccountsService {
         if (!tokenService.isTokenValid(token)) {
             throw new ApplicationException("token is either invalid or expired");
         }
-        authService.updatedPassword(token.getAccountId(), password);
+        authService.updatedPassword(password, token.getAccountId());
     }
 
     private Account findAccountById(String accountId) {

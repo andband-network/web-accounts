@@ -16,7 +16,7 @@ public class AuthService {
         this.authApi = authApi;
     }
 
-    public void updatedPassword(String accountId, String password) {
+    public void updatedPassword(String password, String accountId) {
         Map<String, String> params = new HashMap<>();
         params.put("accountId", accountId);
         params.put("password", password);

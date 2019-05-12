@@ -16,6 +16,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/accounts/forgot-password/**", "/accounts/reset-password/**").anonymous()
+                .antMatchers( "/accounts/**").authenticated()
                 .anyRequest().hasAuthority("ROLE_INTERNAL_API")
                 .and()
                 .csrf().disable();

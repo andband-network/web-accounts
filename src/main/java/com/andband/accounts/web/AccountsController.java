@@ -1,5 +1,6 @@
 package com.andband.accounts.web;
 
+import com.andband.accounts.config.web.resolver.UserDetails;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,12 @@ public class AccountsController {
 
     public AccountsController(AccountsService accountsService) {
         this.accountsService = accountsService;
+    }
+
+    @GetMapping()
+    @ResponseStatus(HttpStatus.OK)
+    public AccountDTO getAccount(UserDetails userDetails) {
+        return accountsService.getAccount(userDetails.getAccountId());
     }
 
     @GetMapping("/{accountId}")
@@ -29,6 +36,24 @@ public class AccountsController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteAccount(@PathVariable("accountId") String accountId) {
         accountsService.deleteAccount(accountId);
+    }
+
+    @PostMapping("/{accountId}/name/{name}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateName(@PathVariable("accountId") String accountId, @PathVariable("name") String name) {
+        accountsService.updateName(name, accountId);
+    }
+
+    @PostMapping("/{accountId}/email/{email}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateAccountName(@PathVariable("accountId") String accountId, @PathVariable("email") String email) {
+        accountsService.updateEmail(email, accountId);
+    }
+
+    @PostMapping("/{accountId}/password/{password}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updatePassword(@PathVariable("accountId") String accountId, @PathVariable("password") String password) {
+        accountsService.updatePassword(password, accountId);
     }
 
     @PostMapping("/forgot-password/{email}")
