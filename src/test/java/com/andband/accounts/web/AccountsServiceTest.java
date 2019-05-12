@@ -1,8 +1,8 @@
 package com.andband.accounts.web;
 
 import com.andband.accounts.exception.ApplicationException;
-import com.andband.accounts.persistence.Account;
-import com.andband.accounts.persistence.AccountRepository;
+import com.andband.accounts.persistence.account.Account;
+import com.andband.accounts.persistence.account.AccountRepository;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.testng.annotations.BeforeMethod;

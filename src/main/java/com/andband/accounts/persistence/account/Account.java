@@ -1,4 +1,4 @@
-package com.andband.accounts.persistence;
+package com.andband.accounts.persistence.account;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;

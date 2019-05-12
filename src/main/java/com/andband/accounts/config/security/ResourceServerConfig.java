@@ -15,6 +15,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                .antMatchers("/accounts/forgot-password/**", "/accounts/reset-password/**").anonymous()
                 .anyRequest().hasAuthority("ROLE_INTERNAL_API")
                 .and()
                 .csrf().disable();

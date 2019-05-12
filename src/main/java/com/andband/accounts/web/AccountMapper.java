@@ -1,6 +1,6 @@
 package com.andband.accounts.web;
 
-import com.andband.accounts.persistence.Account;
+import com.andband.accounts.persistence.account.Account;
 import org.mapstruct.Mapper;
 
 @Mapper

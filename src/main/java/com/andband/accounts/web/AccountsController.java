@@ -31,4 +31,22 @@ public class AccountsController {
         accountsService.deleteAccount(accountId);
     }
 
+    @PostMapping("/forgot-password/{email}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void forgotPassword(@PathVariable("email") String email) {
+        accountsService.initiatePasswordReset(email);
+    }
+
+    @PostMapping("/reset-password/validate-token/{token}")
+    @ResponseStatus(HttpStatus.OK)
+    public boolean isPasswordResetTokenValid(@PathVariable("token") String token) {
+        return accountsService.isPasswordResetTokenValid(token);
+    }
+
+    @PostMapping("/reset-password/{token}/{password}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void resetPassword(@PathVariable("token") String token, @PathVariable("password") String password) {
+        accountsService.resetPassword(token, password);
+    }
+
 }
